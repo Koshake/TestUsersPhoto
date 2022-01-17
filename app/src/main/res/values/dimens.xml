@@ -3,6 +3,7 @@
     <dimen name="margin_small">10dp</dimen>
     <dimen name="margin_xx_small">5dp</dimen>
     <dimen name="margin_medium">15dp</dimen>
+    <dimen name="margin_large">15dp</dimen>
 
     <dimen name="recycler_margin_top">@dimen/margin_small</dimen>
 
@@ -15,5 +16,10 @@
     <dimen name="item_margin_bottom">@dimen/margin_medium</dimen>
 
     <dimen name="text_size_standard">20sp</dimen>
+
+    <dimen name="photo_card_corner_radius">14dp</dimen>
+    <dimen name="photo_card_margin">@dimen/margin_large</dimen>
+    <dimen name="item_photo_height">600dp</dimen>
+    <dimen name="item_photo_width">600dp</dimen>
 
 </resources>
