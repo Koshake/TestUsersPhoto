@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_small">10dp</dimen>
+    <dimen name="margin_xx_small">5dp</dimen>
+    <dimen name="margin_medium">15dp</dimen>
+
+    <dimen name="recycler_margin_top">@dimen/margin_small</dimen>
+
+    <dimen name="margin_line">@dimen/margin_medium</dimen>
+    <dimen name="hairline">1px</dimen>
+
+    <dimen name="item_margin_top">@dimen/margin_medium</dimen>
+    <dimen name="item_margin_start">@dimen/margin_medium</dimen>
+    <dimen name="item_margin_end">@dimen/margin_medium</dimen>
+    <dimen name="item_margin_bottom">@dimen/margin_medium</dimen>
+
+    <dimen name="text_size_standard">20sp</dimen>
+
+</resources>
