@@ -3,4 +3,5 @@
     <string name="users">Users</string>
     <string name="photos">Photos</string>
     <string name="user_name">User name</string>
+    <string name="photo_description">description</string>
 </resources>

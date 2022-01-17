@@ -3,14 +3,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
     android:id="@+id/photo_card_view"
-    android:layout_width="@dimen/item_photo_width"
+    android:layout_width="match_parent"
     android:layout_height="@dimen/item_photo_height"
     android:layout_marginStart="@dimen/photo_card_margin"
+    android:layout_marginBottom="@dimen/margin_small"
+    app:cardElevation="@dimen/photo_card_elevation"
     app:cardCornerRadius="@dimen/photo_card_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <com.koshake1.testusersphoto.utils.EquilateralImageView
+            android:id="@+id/photo_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="centerCrop"
+            app:corner_family="rounded"
+            app:cornerSize="@dimen/photo_image_corner"
+            tool:layout_editor_absoluteX="0dp"
+            tool:layout_editor_absoluteY="0dp" />
+
+        <TextView
+            android:id="@+id/photo_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/photo_image"
+            tool:text="@string/photo_description"/>
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

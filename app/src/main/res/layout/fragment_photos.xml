@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_photo"
         android:layout_width="match_parent"
@@ -28,8 +29,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/recycler_margin_top"
+        android:layout_marginEnd="@dimen/margin_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar_photo" />
+        app:layout_constraintTop_toBottomOf="@+id/appbar_photo"
+        tools:listitem="@layout/item_photo"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
