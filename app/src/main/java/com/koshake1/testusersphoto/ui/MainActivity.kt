@@ -1,7 +1,8 @@
-package com.koshake1.testusersphoto
+package com.koshake1.testusersphoto.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.koshake1.testusersphoto.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
