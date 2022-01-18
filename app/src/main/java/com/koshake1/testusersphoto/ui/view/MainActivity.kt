@@ -1,4 +1,4 @@
-package com.koshake1.testusersphoto.ui
+package com.koshake1.testusersphoto.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         navigateTo(UsersFragment.newInstance())
     }
 
-    private fun navigateTo(fragment: Fragment) {
+    fun navigateTo(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.container, fragment)

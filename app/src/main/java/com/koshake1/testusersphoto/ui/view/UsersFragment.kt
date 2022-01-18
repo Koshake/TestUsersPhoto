@@ -1,4 +1,4 @@
-package com.koshake1.testusersphoto.ui
+package com.koshake1.testusersphoto.ui.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -54,6 +54,7 @@ class UsersFragment : Fragment(R.layout.fragment_users) {
         if (adapter == null) {
             adapter = UsersAdapter(clickListener = object : OnListItemClickListener {
                 override fun onItemClick(id: Int) {
+                    (activity as MainActivity).navigateTo(PhotosFragment.newInstance())
                 }
             })
         }
