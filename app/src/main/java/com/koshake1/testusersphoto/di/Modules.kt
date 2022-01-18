@@ -3,12 +3,16 @@ package com.koshake1.testusersphoto.di
 import android.widget.ImageView
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.koshake1.testusersphoto.model.api.ApiService
+import com.koshake1.testusersphoto.model.data.repository.PhotosRepository
+import com.koshake1.testusersphoto.model.data.repository.PhotosRepositoryImpl
 import com.koshake1.testusersphoto.model.data.repository.UserRepository
 import com.koshake1.testusersphoto.model.data.repository.UserRepositoryImpl
 import com.koshake1.testusersphoto.model.datasources.RemoteDataSource
 import com.koshake1.testusersphoto.model.datasources.RemoteDataSourceImpl
 import com.koshake1.testusersphoto.model.image.GlideImageLoader
 import com.koshake1.testusersphoto.model.image.ImageLoader
+import com.koshake1.testusersphoto.model.interactor.PhotosInteractor
+import com.koshake1.testusersphoto.model.interactor.PhotosInteractorImpl
 import com.koshake1.testusersphoto.viewmodel.UsersViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -40,6 +44,11 @@ val dataSourceModule = module {
 
 val repositoryModule = module {
     single<UserRepository> { UserRepositoryImpl(get()) }
+    single<PhotosRepository> { PhotosRepositoryImpl(get()) }
+}
+
+val interactorModule = module {
+    single<PhotosInteractor> { PhotosInteractorImpl(get()) }
 }
 
 val viewModelModule = module {
