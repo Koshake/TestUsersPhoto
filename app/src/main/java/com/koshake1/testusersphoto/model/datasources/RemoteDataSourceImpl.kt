@@ -11,8 +11,8 @@ class RemoteDataSourceImpl(private val apiService: ApiService) :  RemoteDataSour
         UserResponse(apiService.getUsers().await())
 
     override suspend fun getAlbums(userId: Int): List<UserAlbums> =
-        apiService.getAlbums().await()
+        apiService.getAlbums(userId).await()
 
     override suspend fun getPhotos(albumId: Int): List<Photo> =
-        apiService.getPhotos().await()
+        apiService.getPhotos(albumId).await()
 }

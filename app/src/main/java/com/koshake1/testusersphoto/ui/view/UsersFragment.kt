@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.koshake1.testusersphoto.R
+import com.koshake1.testusersphoto.USER_ID
 import com.koshake1.testusersphoto.databinding.FragmentUsersBinding
 import com.koshake1.testusersphoto.model.data.user.UserResponse
 import com.koshake1.testusersphoto.model.data.viewstate.BaseState
@@ -54,7 +55,7 @@ class UsersFragment : Fragment(R.layout.fragment_users) {
         if (adapter == null) {
             adapter = UsersAdapter(clickListener = object : OnListItemClickListener {
                 override fun onItemClick(id: Int) {
-                    (activity as MainActivity).navigateTo(PhotosFragment.newInstance())
+                    (activity as MainActivity).navigateTo(PhotosFragment.newInstance(id))
                 }
             })
         }

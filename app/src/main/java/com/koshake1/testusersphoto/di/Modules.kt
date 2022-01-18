@@ -13,6 +13,7 @@ import com.koshake1.testusersphoto.model.image.GlideImageLoader
 import com.koshake1.testusersphoto.model.image.ImageLoader
 import com.koshake1.testusersphoto.model.interactor.PhotosInteractor
 import com.koshake1.testusersphoto.model.interactor.PhotosInteractorImpl
+import com.koshake1.testusersphoto.viewmodel.PhotosViewModel
 import com.koshake1.testusersphoto.viewmodel.UsersViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -53,6 +54,7 @@ val interactorModule = module {
 
 val viewModelModule = module {
     viewModel { UsersViewModel(get()) }
+    viewModel { PhotosViewModel(get()) }
 }
 
 val imageModule = module {

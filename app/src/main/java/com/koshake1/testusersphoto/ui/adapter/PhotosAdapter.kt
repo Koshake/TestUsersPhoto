@@ -45,4 +45,7 @@ class PhotosAdapter(
         notifyDataSetChanged()
     }
 
+    fun clear() {
+        this.photos = emptyList()
+    }
 }

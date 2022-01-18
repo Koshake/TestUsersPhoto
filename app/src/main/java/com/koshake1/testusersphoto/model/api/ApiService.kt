@@ -6,6 +6,8 @@ import com.koshake1.testusersphoto.model.data.user.User
 import com.koshake1.testusersphoto.model.data.user.UserResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
     @GET("/users")
@@ -13,10 +15,10 @@ interface ApiService {
     ) : Deferred<List<User>>
 
     @GET("/users/{id}/albums")
-    fun getAlbums(
+    fun getAlbums(@Path("id") id: Int
     ) : Deferred<List<UserAlbums>>
 
     @GET("/albums/{id}/photos")
-    fun getPhotos(
+    fun getPhotos(@Path("id") id: Int
     ) : Deferred<List<Photo>>
 }
