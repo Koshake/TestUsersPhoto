@@ -3,8 +3,8 @@ package com.koshake1.testusersphoto.di
 import android.widget.ImageView
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.koshake1.testusersphoto.model.api.ApiService
-import com.koshake1.testusersphoto.model.data.repository.Repository
-import com.koshake1.testusersphoto.model.data.repository.RepositoryImpl
+import com.koshake1.testusersphoto.model.data.repository.UserRepository
+import com.koshake1.testusersphoto.model.data.repository.UserRepositoryImpl
 import com.koshake1.testusersphoto.model.datasources.RemoteDataSource
 import com.koshake1.testusersphoto.model.datasources.RemoteDataSourceImpl
 import com.koshake1.testusersphoto.model.image.GlideImageLoader
@@ -39,7 +39,7 @@ val dataSourceModule = module {
 }
 
 val repositoryModule = module {
-    single<Repository> { RepositoryImpl(get()) }
+    single<UserRepository> { UserRepositoryImpl(get()) }
 }
 
 val viewModelModule = module {

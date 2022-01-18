@@ -65,7 +65,7 @@ class UsersFragment : Fragment(R.layout.fragment_users) {
         when (state) {
             is BaseState.Success -> renderSuccess(state.data)
             is BaseState.Error -> renderError(state.error)
-            is BaseState.Loading -> setLoading(true)
+            is BaseState.Loading -> setLoading(state.isLoading)
         }
     }
 
