@@ -8,7 +8,7 @@ import com.koshake1.testusersphoto.model.data.user.UserResponse
 class RemoteDataSourceImpl(private val apiService: ApiService) :  RemoteDataSource {
 
     override suspend fun getUsers(): UserResponse =
-        apiService.getUsers().await()
+        UserResponse(apiService.getUsers().await())
 
     override suspend fun getAlbums(userId: Int): List<UserAlbums> =
         apiService.getAlbums().await()

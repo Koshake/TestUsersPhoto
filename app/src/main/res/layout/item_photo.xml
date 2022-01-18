@@ -23,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:scaleType="centerCrop"
-            app:corner_family="rounded"
+            app:cornerFamily="rounded"
             app:cornerSize="@dimen/photo_image_corner"
             tool:layout_editor_absoluteX="0dp"
             tool:layout_editor_absoluteY="0dp" />
