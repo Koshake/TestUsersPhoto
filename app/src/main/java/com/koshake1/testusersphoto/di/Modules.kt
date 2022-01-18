@@ -6,8 +6,10 @@ import com.koshake1.testusersphoto.model.data.repository.Repository
 import com.koshake1.testusersphoto.model.data.repository.RepositoryImpl
 import com.koshake1.testusersphoto.model.datasources.RemoteDataSource
 import com.koshake1.testusersphoto.model.datasources.RemoteDataSourceImpl
+import com.koshake1.testusersphoto.viewmodel.UsersViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,4 +37,8 @@ val dataSourceModule = module {
 
 val repositoryModule = module {
     single<Repository> { RepositoryImpl(get()) }
+}
+
+val viewModelModule = module {
+    viewModel { UsersViewModel(get()) }
 }

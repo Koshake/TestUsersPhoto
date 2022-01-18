@@ -1,15 +1,15 @@
 package com.koshake1.testusersphoto.model.api
 
-import com.koshake1.testusersphoto.model.data.Photo
-import com.koshake1.testusersphoto.model.data.User
-import com.koshake1.testusersphoto.model.data.UserAlbums
+import com.koshake1.testusersphoto.model.data.photo.Photo
+import com.koshake1.testusersphoto.model.data.photo.UserAlbums
+import com.koshake1.testusersphoto.model.data.user.UserResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 
 interface ApiService {
     @GET("/users")
     fun getUsers(
-    ) : Deferred<List<User>>
+    ) : Deferred<UserResponse>
 
     @GET("/users/{id}/albums")
     fun getAlbums(

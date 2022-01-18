@@ -1,4 +1,4 @@
-package com.koshake1.testusersphoto.model.data
+package com.koshake1.testusersphoto.model.data.photo
 
 data class Photo(
     val albumId : Int,
