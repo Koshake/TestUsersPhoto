@@ -1,10 +1,7 @@
 package com.koshake1.testusersphoto.app
 
 import android.app.Application
-import com.koshake1.testusersphoto.di.dataSourceModule
-import com.koshake1.testusersphoto.di.repositoryModule
-import com.koshake1.testusersphoto.di.retrofitModule
-import com.koshake1.testusersphoto.di.viewModelModule
+import com.koshake1.testusersphoto.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.loadKoinModules
 import org.koin.core.context.startKoin
@@ -19,7 +16,8 @@ class App : Application() {
                     retrofitModule,
                     dataSourceModule,
                     repositoryModule,
-                    viewModelModule
+                    viewModelModule,
+                    imageModule,
                 )
             )
         }
