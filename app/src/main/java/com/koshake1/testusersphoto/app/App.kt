@@ -17,7 +17,6 @@ class App : Application() {
                     dataSourceModule,
                     repositoryModule,
                     viewModelModule,
-                    imageModule,
                     interactorModule,
                 )
             )

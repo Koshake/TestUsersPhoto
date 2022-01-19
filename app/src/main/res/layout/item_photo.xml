@@ -18,11 +18,14 @@
         <com.koshake1.testusersphoto.utils.EquilateralImageView
             android:id="@+id/photo_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/item_margin_start"
+            android:layout_marginTop="@dimen/item_margin_top"
+            android:layout_marginEnd="@dimen/item_margin_end"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHeight_percent="0.75"
             android:scaleType="centerCrop"
             app:cornerFamily="rounded"
             app:cornerSize="@dimen/photo_image_corner"
@@ -31,8 +34,10 @@
 
         <TextView
             android:id="@+id/photo_text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/item_margin_start"
+            android:layout_marginTop="@dimen/item_margin_top"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/photo_image"

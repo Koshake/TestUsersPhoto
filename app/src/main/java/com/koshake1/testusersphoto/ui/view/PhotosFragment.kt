@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.koshake1.testusersphoto.R
@@ -13,10 +12,8 @@ import com.koshake1.testusersphoto.USER_ID
 import com.koshake1.testusersphoto.databinding.FragmentPhotosBinding
 import com.koshake1.testusersphoto.model.data.photo.UserPhotos
 import com.koshake1.testusersphoto.model.data.viewstate.BaseState
-import com.koshake1.testusersphoto.model.image.ImageLoader
 import com.koshake1.testusersphoto.ui.adapter.PhotosAdapter
 import com.koshake1.testusersphoto.viewmodel.PhotosViewModel
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class PhotosFragment : Fragment(R.layout.fragment_photos) {
@@ -26,8 +23,6 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
     private val binding get() = bindingNullable!!
 
     private var adapter : PhotosAdapter? = null
-
-    private val imageLoader : ImageLoader<ImageView> by inject()
 
     private val photosViewModel : PhotosViewModel by viewModel()
 
@@ -77,7 +72,7 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
 
     private fun initAdapter() {
         if (adapter == null) {
-            adapter = PhotosAdapter(imageLoader = imageLoader)
+            adapter = PhotosAdapter()
         }
         binding.photosRv.adapter = adapter
     }
@@ -111,11 +106,13 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
     }
 
     private fun showLoading() {
-
+        binding.progressBarPhotos.show()
     }
 
     private fun hideLoading() {
-
+        if (binding.progressBarPhotos.isShown) {
+            binding.progressBarPhotos.hide()
+        }
     }
 
     private fun showMessage(message: String) {

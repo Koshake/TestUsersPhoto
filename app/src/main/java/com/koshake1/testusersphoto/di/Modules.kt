@@ -1,6 +1,5 @@
 package com.koshake1.testusersphoto.di
 
-import android.widget.ImageView
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.koshake1.testusersphoto.model.api.ApiService
 import com.koshake1.testusersphoto.model.data.repository.PhotosRepository
@@ -9,8 +8,6 @@ import com.koshake1.testusersphoto.model.data.repository.UserRepository
 import com.koshake1.testusersphoto.model.data.repository.UserRepositoryImpl
 import com.koshake1.testusersphoto.model.datasources.RemoteDataSource
 import com.koshake1.testusersphoto.model.datasources.RemoteDataSourceImpl
-import com.koshake1.testusersphoto.model.image.GlideImageLoader
-import com.koshake1.testusersphoto.model.image.ImageLoader
 import com.koshake1.testusersphoto.model.interactor.PhotosInteractor
 import com.koshake1.testusersphoto.model.interactor.PhotosInteractorImpl
 import com.koshake1.testusersphoto.viewmodel.PhotosViewModel
@@ -55,8 +52,4 @@ val interactorModule = module {
 val viewModelModule = module {
     viewModel { UsersViewModel(get()) }
     viewModel { PhotosViewModel(get()) }
-}
-
-val imageModule = module {
-    single<ImageLoader<ImageView>> { GlideImageLoader() }
 }

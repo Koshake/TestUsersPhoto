@@ -19,8 +19,7 @@
     <dimen name="photo_card_corner_radius">14dp</dimen>
     <dimen name="photo_card_margin">@dimen/margin_large</dimen>
     <dimen name="photo_card_elevation">6dp</dimen>
-    <dimen name="item_photo_height">600dp</dimen>
-    <dimen name="item_photo_width">600dp</dimen>
+    <dimen name="item_photo_height">500dp</dimen>
 
     <dimen name="photo_image_corner">10dp</dimen>
 
