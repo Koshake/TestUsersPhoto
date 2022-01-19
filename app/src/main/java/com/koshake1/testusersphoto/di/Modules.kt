@@ -19,8 +19,6 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_API_URL = "https://jsonplaceholder.typicode.com/"
-
 val retrofitModule = module {
     single {
         val client = OkHttpClient.Builder()
@@ -28,7 +26,6 @@ val retrofitModule = module {
             .build()
 
         Retrofit.Builder()
-            .baseUrl(BASE_API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .client(client)

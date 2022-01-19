@@ -6,11 +6,11 @@ import android.util.LruCache
 class MemoryCache(private val mLruCache: LruCache<String, Bitmap>) : ImageCache {
 
     override fun getBitmap(url: String): Bitmap? {
-        TODO("Not yet implemented")
+        return mLruCache.get(url)
     }
 
     override fun putBitmap(url: String, bitmap: Bitmap) {
-        TODO("Not yet implemented")
+        mLruCache.put(url, bitmap)
     }
 
 }
