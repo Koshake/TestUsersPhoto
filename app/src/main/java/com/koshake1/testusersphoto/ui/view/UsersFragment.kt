@@ -58,16 +58,16 @@ class UsersFragment : BaseFragment<FragmentUsersBinding, UserResponse, UsersView
         super.renderData(state)
     }
 
-    override fun renderSuccess(userResponse: UserResponse) {
+    override fun renderSuccess(data: UserResponse) {
         hideLoading()
         adapter?.let {
             it.clear()
-            it.fillList(userResponse.users)
+            it.fillList(data.users)
         }
     }
 
-    override fun setLoading(loading: Boolean) {
-        if (loading) {
+    override fun setLoading(isLoading: Boolean) {
+        if (isLoading) {
             showLoading()
         } else {
             hideLoading()

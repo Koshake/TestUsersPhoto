@@ -3,6 +3,9 @@ package com.koshake1.testusersphoto.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebSettings
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.koshake1.testusersphoto.R
@@ -19,11 +22,22 @@ class PhotosAdapter(
             with(rvBinding) {
                 photoText.text = currentItem.title
 
-                photoImage.load(currentItem.url) {
-                    crossfade(true)
-                    error(R.drawable.ic_load_error_vector)
-                    placeholder(R.drawable.ic_no_photo_vector)
+                photoImage.settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
+                photoImage.settings.loadWithOverviewMode = true
+                photoImage.settings.useWideViewPort = true
+
+                photoImage.webViewClient = object : WebViewClient() {
+                    override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
+                        view.loadUrl(url)
+                        return false
+                    }
+
+                    override fun onPageFinished(view: WebView, url: String) {
+                        super.onPageFinished(view, url)
+                        progressBar.visibility = View.GONE
+                    }
                 }
+                photoImage.loadUrl(currentItem.url)
             }
         }
     }

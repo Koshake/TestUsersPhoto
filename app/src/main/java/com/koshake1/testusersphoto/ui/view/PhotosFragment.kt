@@ -74,16 +74,16 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding, UserPhotos, PhotosVie
         super.renderData(state)
     }
 
-    override fun renderSuccess(photos: UserPhotos) {
+    override fun renderSuccess(data: UserPhotos) {
         hideLoading()
         adapter?.let {
             it.clear()
-            it.fillList(photos.photos)
+            it.fillList(data.photos)
         }
     }
 
-    override fun setLoading(loading: Boolean) {
-        if (loading) {
+    override fun setLoading(isLoading: Boolean) {
+        if (isLoading) {
             showLoading()
         } else {
             hideLoading()

@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.koshake1.testusersphoto.utils.EquilateralImageView
+        <WebView
             android:id="@+id/photo_image"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -25,12 +25,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintHeight_percent="0.75"
-            android:scaleType="centerCrop"
-            app:cornerFamily="rounded"
-            app:cornerSize="@dimen/photo_image_corner"
-            tool:layout_editor_absoluteX="0dp"
-            tool:layout_editor_absoluteY="0dp" />
+            app:layout_constraintHeight_percent="0.75">
+
+        </WebView>
 
         <TextView
             android:id="@+id/photo_text"
