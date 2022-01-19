@@ -4,10 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.Fragment
-import com.koshake1.testusersphoto.R
-import com.koshake1.testusersphoto.USER_ID
 import com.koshake1.testusersphoto.databinding.FragmentUsersBinding
 import com.koshake1.testusersphoto.model.data.user.UserResponse
 import com.koshake1.testusersphoto.model.data.viewstate.BaseState
@@ -16,13 +12,11 @@ import com.koshake1.testusersphoto.ui.adapter.UsersAdapter
 import com.koshake1.testusersphoto.viewmodel.UsersViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class UsersFragment : Fragment(R.layout.fragment_users) {
+class UsersFragment : BaseFragment<FragmentUsersBinding, UserResponse, UsersViewModel>() {
 
-    private var bindingNullable: FragmentUsersBinding? = null
+    override var bindingNullable: FragmentUsersBinding? = null
 
-    private val binding get() = bindingNullable!!
-
-    private val usersViewModel: UsersViewModel by viewModel()
+    override val viewModel: UsersViewModel by viewModel()
 
     private var adapter: UsersAdapter? = null
 
@@ -40,10 +34,7 @@ class UsersFragment : Fragment(R.layout.fragment_users) {
 
         initAdapter()
 
-        usersViewModel.getUsers()
-        usersViewModel.stateLiveData.observe(viewLifecycleOwner) {
-            renderData(it)
-        }
+        viewModel.getUsers()
     }
 
     override fun onDestroy() {
@@ -62,15 +53,12 @@ class UsersFragment : Fragment(R.layout.fragment_users) {
         binding.mainRecycler.adapter = adapter
     }
 
-    private fun renderData(state: BaseState<UserResponse>?) {
-        when (state) {
-            is BaseState.Success -> renderSuccess(state.data)
-            is BaseState.Error -> renderError(state.error)
-            is BaseState.Loading -> setLoading(state.isLoading)
-        }
+    override fun renderData(state: BaseState<UserResponse>) {
+        hideLoading()
+        super.renderData(state)
     }
 
-    private fun renderSuccess(userResponse: UserResponse) {
+    override fun renderSuccess(userResponse: UserResponse) {
         hideLoading()
         adapter?.let {
             it.clear()
@@ -78,11 +66,7 @@ class UsersFragment : Fragment(R.layout.fragment_users) {
         }
     }
 
-    private fun renderError(error: Throwable) {
-        error.message?.let { showMessage(it) }
-    }
-
-    private fun setLoading(loading: Boolean) {
+    override fun setLoading(loading: Boolean) {
         if (loading) {
             showLoading()
         } else {
@@ -98,14 +82,6 @@ class UsersFragment : Fragment(R.layout.fragment_users) {
         if (binding.progressBarUsers.isShown) {
             binding.progressBarUsers.hide()
         }
-    }
-
-    private fun showMessage(message: String) {
-        Toast.makeText(
-            requireContext(),
-            message,
-            Toast.LENGTH_LONG
-        ).show()
     }
 
     companion object {

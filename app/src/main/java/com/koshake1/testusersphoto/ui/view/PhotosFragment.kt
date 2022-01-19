@@ -5,9 +5,6 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.Fragment
-import com.koshake1.testusersphoto.R
 import com.koshake1.testusersphoto.USER_ID
 import com.koshake1.testusersphoto.databinding.FragmentPhotosBinding
 import com.koshake1.testusersphoto.model.data.photo.UserPhotos
@@ -16,15 +13,13 @@ import com.koshake1.testusersphoto.ui.adapter.PhotosAdapter
 import com.koshake1.testusersphoto.viewmodel.PhotosViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class PhotosFragment : Fragment(R.layout.fragment_photos) {
+class PhotosFragment : BaseFragment<FragmentPhotosBinding, UserPhotos, PhotosViewModel>() {
 
-    private var bindingNullable: FragmentPhotosBinding? = null
-
-    private val binding get() = bindingNullable!!
+    override var bindingNullable: FragmentPhotosBinding? = null
 
     private var adapter : PhotosAdapter? = null
 
-    private val photosViewModel : PhotosViewModel by viewModel()
+    override val viewModel: PhotosViewModel by viewModel()
 
     private val userId by lazy(LazyThreadSafetyMode.NONE) { arguments?.getInt(USER_ID) }
 
@@ -48,11 +43,8 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
 
         initAdapter()
 
-        userId?.let { photosViewModel.getPhotos(it) }
+        userId?.let { viewModel.getPhotos(it) }
 
-        photosViewModel.stateLiveData.observe(viewLifecycleOwner) {
-            renderData(it)
-        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -77,15 +69,12 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
         binding.photosRv.adapter = adapter
     }
 
-    private fun renderData(state: BaseState<UserPhotos>?) {
-        when (state) {
-            is BaseState.Success -> renderSuccess(state.data)
-            is BaseState.Error -> renderError(state.error)
-            is BaseState.Loading -> setLoading(state.isLoading)
-        }
+    override fun renderData(state: BaseState<UserPhotos>) {
+        hideLoading()
+        super.renderData(state)
     }
 
-    private fun renderSuccess(photos: UserPhotos) {
+    override fun renderSuccess(photos: UserPhotos) {
         hideLoading()
         adapter?.let {
             it.clear()
@@ -93,11 +82,7 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
         }
     }
 
-    private fun renderError(error: Throwable) {
-        error.message?.let { showMessage(it) }
-    }
-
-    private fun setLoading(loading: Boolean) {
+    override fun setLoading(loading: Boolean) {
         if (loading) {
             showLoading()
         } else {
@@ -113,14 +98,6 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
         if (binding.progressBarPhotos.isShown) {
             binding.progressBarPhotos.hide()
         }
-    }
-
-    private fun showMessage(message: String) {
-        Toast.makeText(
-            requireContext(),
-            message,
-            Toast.LENGTH_LONG
-        ).show()
     }
 
     companion object {
