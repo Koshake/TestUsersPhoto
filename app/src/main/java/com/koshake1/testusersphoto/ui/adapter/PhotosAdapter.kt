@@ -7,7 +7,6 @@ import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.recyclerview.widget.RecyclerView
-import coil.api.load
 import com.koshake1.testusersphoto.R
 import com.koshake1.testusersphoto.databinding.ItemPhotoBinding
 import com.koshake1.testusersphoto.model.data.photo.Photo
