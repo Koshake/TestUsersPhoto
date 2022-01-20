@@ -5,12 +5,15 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.koshake1.testusersphoto.USER_ID
 import com.koshake1.testusersphoto.databinding.FragmentPhotosBinding
 import com.koshake1.testusersphoto.model.data.photo.UserPhotos
 import com.koshake1.testusersphoto.model.data.viewstate.BaseState
+import com.koshake1.testusersphoto.model.image.ImageLoader
 import com.koshake1.testusersphoto.ui.adapter.PhotosAdapter
 import com.koshake1.testusersphoto.viewmodel.PhotosViewModel
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class PhotosFragment : BaseFragment<FragmentPhotosBinding, UserPhotos, PhotosViewModel>() {
@@ -22,6 +25,8 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding, UserPhotos, PhotosVie
     override val viewModel: PhotosViewModel by viewModel()
 
     private val userId by lazy(LazyThreadSafetyMode.NONE) { arguments?.getInt(USER_ID) }
+
+    private val imageLoader: ImageLoader<ImageView> by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,7 +69,7 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding, UserPhotos, PhotosVie
 
     private fun initAdapter() {
         if (adapter == null) {
-            adapter = PhotosAdapter()
+            adapter = PhotosAdapter(imageLoader = imageLoader)
         }
         binding.photosRv.adapter = adapter
     }

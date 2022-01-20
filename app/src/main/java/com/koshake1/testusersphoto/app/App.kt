@@ -18,6 +18,7 @@ class App : Application() {
                     repositoryModule,
                     viewModelModule,
                     interactorModule,
+                    preferencesModule
                 )
             )
         }

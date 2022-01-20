@@ -8,10 +8,8 @@ import okhttp3.ResponseBody
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-const val BASE_API_URL = "https://jsonplaceholder.typicode.com/"
-
 interface ApiService {
-    @GET("$BASE_API_URL/users")
+    @GET("/users")
     fun getUsers(
     ) : Deferred<List<User>>
 

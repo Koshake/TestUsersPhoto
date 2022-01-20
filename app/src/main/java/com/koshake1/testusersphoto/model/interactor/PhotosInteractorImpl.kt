@@ -1,14 +1,18 @@
 package com.koshake1.testusersphoto.model.interactor
 
+import android.widget.ImageView
 import com.koshake1.testusersphoto.model.data.photo.Photo
 import com.koshake1.testusersphoto.model.data.photo.UserPhotos
 import com.koshake1.testusersphoto.model.data.repository.PhotosRepository
+import com.koshake1.testusersphoto.model.image.ImageLoader
 
-class PhotosInteractorImpl(private val repository : PhotosRepository) : PhotosInteractor {
+class PhotosInteractorImpl(
+    private val repository: PhotosRepository,
+) : PhotosInteractor {
 
     private val photos = arrayListOf<Photo>()
 
-    override suspend fun getAllUserPhotos(userId : Int): UserPhotos {
+    override suspend fun getAllUserPhotos(userId: Int): UserPhotos {
 
         repository.getAlbums(userId).forEach {
             photos.addAll(repository.getPhotos(it.id))

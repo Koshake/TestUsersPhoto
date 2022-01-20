@@ -1,14 +1,11 @@
 package com.koshake1.testusersphoto.model.image
 
-import android.widget.ImageView
-import com.koshake1.testusersphoto.model.image.cache.ImageCache
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.LruCache
+import android.widget.ImageView
 import com.koshake1.testusersphoto.model.datasources.RemoteDataSource
-import okhttp3.ResponseBody
-import java.io.FileOutputStream
-import java.io.InputStream
-import java.io.OutputStream
+import com.koshake1.testusersphoto.model.image.cache.ImageCache
 
 class ImageLoaderImpl(
     private val imageCache: ImageCache,

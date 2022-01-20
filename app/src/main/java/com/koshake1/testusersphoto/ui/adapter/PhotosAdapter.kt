@@ -1,18 +1,22 @@
 package com.koshake1.testusersphoto.ui.adapter
 
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.koshake1.testusersphoto.R
 import com.koshake1.testusersphoto.databinding.ItemPhotoBinding
 import com.koshake1.testusersphoto.model.data.photo.Photo
+import com.koshake1.testusersphoto.model.image.ImageLoader
 
 class PhotosAdapter(
-    private var photos : List<Photo> = ArrayList()
+    private var photos : List<Photo> = ArrayList(),
+    private val imageLoader : ImageLoader<ImageView>
 ) : RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder>() {
 
     inner class PhotosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,18 +29,6 @@ class PhotosAdapter(
                 photoImage.settings.loadWithOverviewMode = true
                 photoImage.settings.useWideViewPort = true
 
-                photoImage.webViewClient = object : WebViewClient() {
-                    override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
-                        view.loadUrl(url)
-                        return false
-                    }
-
-                    override fun onPageFinished(view: WebView, url: String) {
-                        super.onPageFinished(view, url)
-                        progressBar.visibility = View.GONE
-                    }
-                }
-                photoImage.loadUrl(currentItem.url)
             }
         }
     }
