@@ -43,23 +43,13 @@ abstract class BaseFragment<VB : ViewBinding, D : AppStateEntity, VM : BaseViewM
 
     protected open fun renderError(error: Throwable) {
         setLoading(false)
-        error.message?.let { showMessage(it) }
     }
 
     protected open fun renderMessage(message: String) {
         setLoading(false)
-        showMessage(message)
     }
 
     protected open fun setLoading(isLoading: Boolean) {
 
-    }
-
-    private fun showMessage(message: String) {
-        Toast.makeText(
-            requireContext(),
-            message,
-            Toast.LENGTH_LONG
-        ).show()
     }
 }

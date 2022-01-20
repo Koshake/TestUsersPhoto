@@ -87,6 +87,11 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding, UserPhotos, PhotosVie
         }
     }
 
+    override fun renderError(error: Throwable) {
+        super.renderError(error)
+        hideLoading()
+    }
+
     override fun setLoading(isLoading: Boolean) {
         if (isLoading) {
             showLoading()

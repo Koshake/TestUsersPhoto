@@ -20,12 +20,12 @@ class PhotosAdapter(
         fun bind(currentItem: Photo) {
             with(rvBinding) {
                 photoText.text = currentItem.title
-
                 imageLoader.showImage(
                     photoImage,
                     currentItem.url.substring(currentItem.url.lastIndexOf('/') + 1),
                     R.drawable.ic_no_photo_vector
                 )
+                progressBar.visibility = View.GONE
             }
         }
     }
