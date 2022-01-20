@@ -1,12 +1,7 @@
 package com.koshake1.testusersphoto.di
 
-import android.content.Context
-import android.content.SharedPreferences
-import android.graphics.Bitmap
-import android.util.LruCache
 import android.widget.ImageView
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.koshake1.testusersphoto.APP_PREFERENCES
 import com.koshake1.testusersphoto.model.api.ApiService
 import com.koshake1.testusersphoto.model.api.ApiServiceImage
 import com.koshake1.testusersphoto.model.data.repository.PhotosRepository
@@ -32,7 +27,6 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.math.sin
 
 const val BASE_API_URL = "https://jsonplaceholder.typicode.com/"
 const val BASE_API_URL_IMAGE = "https://via.placeholder.com/600/"

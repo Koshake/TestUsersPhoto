@@ -3,6 +3,7 @@ package com.koshake1.testusersphoto.ui.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.koshake1.testusersphoto.FRAGMENTS
 import com.koshake1.testusersphoto.R
 import com.koshake1.testusersphoto.databinding.ActivityMainBinding
 
@@ -16,14 +17,16 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        navigateTo(UsersFragment.newInstance())
+        if (savedInstanceState == null) {
+            navigateTo(UsersFragment.newInstance())
+        }
     }
 
     fun navigateTo(fragment: Fragment) {
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.container, fragment)
-            .addToBackStack("fragments")
+            .addToBackStack(FRAGMENTS)
             .commit()
     }
 }
