@@ -20,8 +20,4 @@ interface ApiService {
     @GET("/albums/{id}/photos")
     fun getPhotos(@Path("id") id: Int
     ) : Deferred<List<Photo>>
-
-    @GET("imageUrl")
-    fun getImage(@Path("imageUrl") image : String
-    ) : Deferred<ResponseBody>
 }

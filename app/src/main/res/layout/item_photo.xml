@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <WebView
+        <com.koshake1.testusersphoto.utils.EquilateralImageView
             android:id="@+id/photo_image"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintHeight_percent="0.75">
 
-        </WebView>
+        </com.koshake1.testusersphoto.utils.EquilateralImageView>
 
         <TextView
             android:id="@+id/photo_text"

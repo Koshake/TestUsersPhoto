@@ -18,7 +18,8 @@ class App : Application() {
                     repositoryModule,
                     viewModelModule,
                     interactorModule,
-                    preferencesModule
+                    imageLoaderModule,
+                    cacheModule
                 )
             )
         }

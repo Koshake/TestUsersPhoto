@@ -1,12 +1,7 @@
 package com.koshake1.testusersphoto.ui.adapter
-
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebSettings
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.koshake1.testusersphoto.R
@@ -16,7 +11,8 @@ import com.koshake1.testusersphoto.model.image.ImageLoader
 
 class PhotosAdapter(
     private var photos : List<Photo> = ArrayList(),
-    private val imageLoader : ImageLoader<ImageView>
+    private val imageLoader: ImageLoader<ImageView>
+
 ) : RecyclerView.Adapter<PhotosAdapter.PhotosViewHolder>() {
 
     inner class PhotosViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -25,10 +21,11 @@ class PhotosAdapter(
             with(rvBinding) {
                 photoText.text = currentItem.title
 
-                photoImage.settings.layoutAlgorithm = WebSettings.LayoutAlgorithm.NORMAL
-                photoImage.settings.loadWithOverviewMode = true
-                photoImage.settings.useWideViewPort = true
-
+                imageLoader.showImage(
+                    photoImage,
+                    currentItem.url.substring(currentItem.url.lastIndexOf('/') + 1),
+                    R.drawable.ic_no_photo_vector
+                )
             }
         }
     }
