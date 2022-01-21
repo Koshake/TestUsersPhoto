@@ -80,6 +80,7 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding, UserPhotos, PhotosVie
             it.clear()
             it.fillList(data.photos)
         }
+        super.renderSuccess(data)
     }
 
     override fun setLoading(isLoading: Boolean) {

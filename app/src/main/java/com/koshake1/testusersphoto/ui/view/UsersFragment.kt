@@ -59,10 +59,12 @@ class UsersFragment : BaseFragment<FragmentUsersBinding, UserResponse, UsersView
             it.clear()
             it.fillList(data.users)
         }
+        super.renderSuccess(data)
     }
 
     override fun renderError(error: Throwable) {
         error.message?.let { showMessage(it) }
+        super.renderError(error)
     }
 
     override fun setLoading(isLoading: Boolean) {
