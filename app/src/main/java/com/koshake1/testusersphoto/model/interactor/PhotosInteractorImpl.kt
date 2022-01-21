@@ -10,9 +10,9 @@ class PhotosInteractorImpl(
 
     private val photos = arrayListOf<Photo>()
 
-    override suspend fun getAllUserPhotos(userId: Int): UserPhotos {
+    override suspend fun getAllUserPhotos(id: Int): UserPhotos {
 
-        repository.getAlbums(userId).forEach {
+        repository.getAlbums(id).forEach {
             photos.addAll(repository.getPhotos(it.id))
         }
 

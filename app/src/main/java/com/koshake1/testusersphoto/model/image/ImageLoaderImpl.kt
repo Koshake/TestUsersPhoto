@@ -18,6 +18,7 @@ class ImageLoaderImpl(
     companion object {
         private const val TAG = "TAG"
     }
+
     private val imageLoaderCoroutineScope = CoroutineScope(
         Dispatchers.Main
                 + SupervisorJob()

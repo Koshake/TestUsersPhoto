@@ -74,22 +74,12 @@ class PhotosFragment : BaseFragment<FragmentPhotosBinding, UserPhotos, PhotosVie
         binding.photosRv.adapter = adapter
     }
 
-    override fun renderData(state: BaseState<UserPhotos>) {
-        hideLoading()
-        super.renderData(state)
-    }
-
     override fun renderSuccess(data: UserPhotos) {
         hideLoading()
         adapter?.let {
             it.clear()
             it.fillList(data.photos)
         }
-    }
-
-    override fun renderError(error: Throwable) {
-        super.renderError(error)
-        hideLoading()
     }
 
     override fun setLoading(isLoading: Boolean) {

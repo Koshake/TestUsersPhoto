@@ -54,13 +54,7 @@ class UsersFragment : BaseFragment<FragmentUsersBinding, UserResponse, UsersView
         binding.mainRecycler.adapter = adapter
     }
 
-    override fun renderData(state: BaseState<UserResponse>) {
-        hideLoading()
-        super.renderData(state)
-    }
-
     override fun renderSuccess(data: UserResponse) {
-        hideLoading()
         adapter?.let {
             it.clear()
             it.fillList(data.users)
@@ -68,9 +62,9 @@ class UsersFragment : BaseFragment<FragmentUsersBinding, UserResponse, UsersView
     }
 
     override fun renderError(error: Throwable) {
-        hideLoading()
         error.message?.let { showMessage(it) }
     }
+
     override fun setLoading(isLoading: Boolean) {
         if (isLoading) {
             showLoading()

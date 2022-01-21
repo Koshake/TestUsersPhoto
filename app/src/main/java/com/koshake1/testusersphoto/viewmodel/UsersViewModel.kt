@@ -7,7 +7,7 @@ import com.koshake1.testusersphoto.model.data.viewstate.BaseState
 class UsersViewModel(private val repository: UserRepository) : BaseViewModel<UserResponse>() {
 
     fun getUsers() {
-        mStateLiveData.postValue(BaseState.Loading(true))
+        mStateLiveData.postValue(BaseState.Loading())
         runAsync {
             mStateLiveData.postValue(BaseState.Success(repository.getUsers()))
         }
